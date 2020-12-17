@@ -19,8 +19,6 @@ void main()
 	printf("\nSorted array is :");
 	for(i=0;i<n;i++)
 		printf("%d ",a[i]);
-
-	return 0;
 }
 
 void mergesort(int a[],int i,int j)
