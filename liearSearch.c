@@ -18,6 +18,7 @@ void main(){
         }
     }
 
+    //This part of the code was in the for loop, so it was been printed at many times the loop was executed
     if(flag){
         printf("Successful search!");
     }
