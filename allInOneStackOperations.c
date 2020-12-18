@@ -1,6 +1,7 @@
 #include<stdio.h>
+#include<stdlib.h>
 //global variables
-int stack[100],choice,n,top,x,i;
+int *stack,choice,n,top,x,i;
 
 //declaration of methods
 void push(void);
@@ -16,11 +17,12 @@ void main()
     top=-1;
     printf("\n Enter the size of STACK[MAX=100]:");
     scanf("%d",&n);
-    printf("\n\t STACK OPERATIONS USING ARRAY");
-    printf("\n\t--------------------------------");
-    printf("\n\t 1.PUSH\n\t 2.POP\n\t 3.PEEP\n\t 4.CHANGE\n\t 5.DISPLAY\n\t 6.EXIT");
+    stack = (int*) malloc(n * sizeof(int));
     do
     {
+        printf("\n\t STACK OPERATIONS USING ARRAY");
+        printf("\n\t--------------------------------");
+        printf("\n\t 1.PUSH\n\t 2.POP\n\t 3.PEEP\n\t 4.CHANGE\n\t 5.DISPLAY\n\t 6.EXIT");
         printf("\n Enter the Choice:");
         scanf("%d",&choice);
         switch(choice)
@@ -53,6 +55,7 @@ void main()
             case 6:
             {
                 printf("\n\t EXIT POINT ");
+                free(stack);
                 break;
             }
             default:
@@ -76,7 +79,7 @@ void push()
         printf(" Enter a value to be pushed:");
         scanf("%d",&x);
         top++;
-        stack[top]=x;
+        *(stack + top)=x;
     }
 }
 void pop()
@@ -99,7 +102,7 @@ void peep()
     }
     else
     {
-        printf("Top Element is = %d\n", stack[top]);
+        printf("Top Element is = %d\n", *(stack + top));
  }
 }
 void change()
@@ -122,7 +125,7 @@ void change()
             printf("Enter the number to which you have to change : ");
             scanf("%d", &e);
         }
-        stack[no-1] = e;
+        *(stack +(no-1)) = e;
     }
 }
 void display()
@@ -131,7 +134,7 @@ void display()
     {
         printf("\n The elements in STACK \n");
         for(i=top; i>=0; i--)
-            printf("\n%d",stack[i]);
+            printf("\n%d",*(stack + i));
         printf("\n Press Next Choice");
     }
     else
