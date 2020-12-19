@@ -47,6 +47,8 @@ void main()
             }
     }
 }
+
+//function definition
 void Queue_insert()
 {
     int e;
@@ -66,6 +68,7 @@ void Queue_insert()
     }
 }
 
+//function definition
 int Queue_delete()
 {
     if(f== -1 || f > r)
@@ -80,6 +83,7 @@ int Queue_delete()
     }
 }
 
+//function definition
 void Queue_display()
 {
     int i;
