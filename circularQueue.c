@@ -1,4 +1,5 @@
 # include<stdio.h>
+#include<stdlib.h>
 # define MAX 50
 
 int cqueue_arr[MAX];
@@ -47,7 +48,7 @@ void del()
 	    else{
 		    front = (front + 1) % MAX;
 	    }
-        printf("Element to be deleted is %d", element);
+        printf("Element to be deleted is %d\n", element);
     }
 	
 }
@@ -56,33 +57,20 @@ void del()
 /*Begin of display*/
 void display()
 {
-	int front_pos = front,rear_pos = rear;
+	int front_pos = front,rear_pos = rear, i;
 	if(front == -1)
 	{
 		printf("Queue is empty\n");
 		return;
 	}
-	printf("Queue elements :\n");
-	if( front_pos <= rear_pos )
-		while(front_pos <= rear_pos)
-		{
-			printf("%d ",cqueue_arr[front_pos]);
-			front_pos++;
-		}
-	else
-	{
-		while(front_pos <= MAX-1)
-		{
-			printf("%d ",cqueue_arr[front_pos]);
-			front_pos++;
-		}
-		front_pos = 0;
-		while(front_pos <= rear_pos)
-		{
-			printf("%d ",cqueue_arr[front_pos]);
-			front_pos++;
-		}
-	}
+    else{
+        i=front;
+        printf("Queue elements:\n");
+        while(i<=rear){
+            printf("%d\t", cqueue_arr[i]);
+            i = (i + 1) % MAX;
+        }
+    }
 	printf("\n");
 }
 /*End of display*/
@@ -115,7 +103,9 @@ int main()
 				display();
 				break;
 			case 4:
-				break;
+                printf("You choose exit the process...");
+                exit(0);
+                break;
 			default:
 				printf("Invalid choice\n");
 		}
