@@ -8,6 +8,7 @@ int rear = -1;
 /*Begin of insert*/
 void insert(int item)
 {
+    //the second condition comes in scene when the rear completes one whole round and is behind the front end
 	if((front == 0 && rear == MAX-1) || (front == rear+1))
 	{
 		printf("Queue Overflow \n");
@@ -20,36 +21,35 @@ void insert(int item)
 	}
 	else
 	{
-		if(rear == MAX-1)	/*rear is at last position of queue */
-			rear = 0;
-		else
-			rear = rear+1;
+        //statement changed here
+		rear = (rear + 1) % MAX;
 	}
 	cqueue_arr[rear] = item ;
 }
 /*End of insert*/
 
+//del function also modified
 /*Begin of del*/
 void del()
 {
+    int element;
 	if (front == -1)
 	{
 		printf("Queue Underflow\n");
 		return ;
 	}
-	printf("Element deleted from queue is : %d\n",cqueue_arr[front]);
-	if(front == rear) /* queue has only one element */
-	{
-		front = -1;
-		rear=-1;
-	}
-	else
-	{
-		if(front == MAX-1)
-			front = 0;
-		else
-			front = front+1;
-	}
+    else{
+        element = cqueue_arr[front];
+        if(front == rear){ /* queue has only one element */
+		    front = -1;
+		    rear=-1;
+	    }
+	    else{
+		    front = (front + 1) % MAX;
+	    }
+        printf("Element to be deleted is %d", element);
+    }
+	
 }
 /*End of del() */
 
