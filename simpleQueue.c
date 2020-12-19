@@ -1,8 +1,13 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 #define MAX 50
+
+// declaration of methods
 void Queue_insert();
 int Queue_delete();
 void Queue_display();
+// global variables
 int Q[MAX];
 int f = -1;
 int r = -1;
@@ -35,7 +40,8 @@ void main()
                 case 4:
                 {
                     printf("\nYou Choose to exit");
-     break;
+                    exit(0);
+                    break;
                 }
                 default: printf("Invalid Choice\n");
             }
@@ -62,7 +68,6 @@ void Queue_insert()
 
 int Queue_delete()
 {
-    //int y;
     if(f== -1 || f > r)
     {
         printf("\nQueue is Empty");
